@@ -1,0 +1,475 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CertiGest · Control de certificados digitales</title>
+<meta name="description" content="Encuentra al instante el certificado digital de tu cliente por nombre, NIF o CIF, entra con un clic en la AEAT y la Seguridad Social, descarga certificados y declaraciones, firma PDF con el certificado y avisa a tus clientes antes de que caduquen.">
+<meta name="theme-color" content="#080a22">
+<link rel="icon" href="icono.svg" type="image/svg+xml"><link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header id="cab">
+  <div class="wrap in">
+    <a class="brand" href="#top" aria-label="CertiGest"><img alt="CertiGest" src="logo-blanco.svg"></a>
+    <nav>
+      <a href="#funciones">Funciones</a>
+      <a href="#descargas">Descargas</a>
+      <a href="#agenda">Avisos</a>
+      <a href="#firma">Firmar PDF</a>
+      <a href="#precios">Precios</a>
+      <a href="CertiGest_Guia_de_uso.pdf" target="_blank" rel="noopener">Guía</a>
+      <a class="btn btn-main btn-sm" href="https://github.com/germanvv89/certigest-descargas/releases/download/v1/CertiGest_Setup_v1.4.0.exe">Descargar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero dark">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow rv">Para asesorías y gestorías</p>
+        <h1 class="rv" style="--d:.08s">Cada certificado, <span class="hl">a un clic.</span> Punto.</h1>
+        <p class="lead rv" style="--d:.16s">Escribe el nombre, el NIF o el CIF y CertiGest encuentra el certificado de tu cliente entre cientos. Entra en la AEAT y la Seguridad Social con ese certificado ya elegido, descarga sus declaraciones y justificantes, y avísale antes de que caduque.</p>
+        <div class="cta rv" style="--d:.24s">
+          <a class="btn btn-main" href="https://github.com/germanvv89/certigest-descargas/releases/download/v1/CertiGest_Setup_v1.4.0.exe">Descargar y probar 10 días <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-line" href="#precios">Ver precios</a>
+        </div>
+        <div class="stats rv" style="--d:.32s">
+          <div class="stat"><b>1 clic</b><span>a la AEAT y Seg. Social</span></div>
+          <div class="stat"><b>10 días</b><span>de prueba completa</span></div>
+          <div class="stat"><b>100 %</b><span>en tu PC, sin nube</span></div>
+        </div>
+        <p class="small rv" style="--d:.4s">Windows 10 y 11 · Instalador de un solo archivo · Sin tarjeta ni registro</p>
+      </div>
+
+      <div class="emblem" aria-hidden="true">
+        <div class="aura"></div>
+        <canvas class="spark"></canvas>
+        <svg class="logo" viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a5b4fc" stop-opacity="0"/><stop offset="1" stop-color="#a5b4fc" stop-opacity=".35"/></linearGradient>
+          </defs>
+          <circle class="ripple" cx="200" cy="200" r="170" fill="none" stroke="#a5b4fc" stroke-width="2"/>
+          <circle class="ripple" cx="200" cy="200" r="170" fill="none" stroke="#a5b4fc" stroke-width="2"/>
+          <circle class="ripple" cx="200" cy="200" r="170" fill="none" stroke="#fbbf24" stroke-width="2"/>
+          <g class="ring-slow"><circle cx="200" cy="200" r="186" fill="none" stroke="#a5b4fc" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="2 12" stroke-linecap="round"/></g>
+          <g class="ticks" id="ticks"></g>
+          <g class="sweep"><path d="M200 200 L200 42 A158 158 0 0 1 338 121 Z" fill="url(#sweep)"/></g>
+          <g transform="translate(200 200) scale(3.7) translate(-40 -40)">
+            <path class="arc" pathLength="1" d="M59.9 23.3 A26 26 0 1 0 59.9 56.7" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+            <path d="M40 40 L49 46" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="120s" repeatCount="indefinite"/></path>
+            <path d="M40 40 V27" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="10s" repeatCount="indefinite"/></path>
+            <circle class="hub" cx="40" cy="40" r="4.5" fill="#fbbf24"/>
+          </g>
+        </svg>
+        <div class="chips" id="chips"></div>
+      </div>
+    </div>
+
+    <div class="hero-screen rv">
+      <div class="screen" id="pantalla"><img src="app-oscuro.png" width="1240" height="760" alt="Pantalla principal de CertiGest en modo oscuro: tabla de certificados con su estado, titular, fecha de caducidad y días que quedan, y a la derecha la ficha con los accesos a la AEAT y la Seguridad Social."></div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-label="Sedes a las que se entra con un clic">
+  <div class="mq">
+    <span>AEAT</span><span>Seguridad Social</span><span>DEHú</span><span>DGT</span><span>Catastro</span><span>SEPE</span><span>Carpeta Ciudadana</span><span>Tus propias páginas</span>
+    <span>AEAT</span><span>Seguridad Social</span><span>DEHú</span><span>DGT</span><span>Catastro</span><span>SEPE</span><span>Carpeta Ciudadana</span><span>Tus propias páginas</span>
+  </div>
+</div>
+
+<!-- FUNCIONES -->
+<section id="funciones" class="light" style="padding-bottom:70px">
+  <div class="wrap car-head">
+    <div class="sec-head rv" style="margin-bottom:0">
+      <p class="eyebrow">Qué hace</p>
+      <h2>Pensado para quien vive entre <span class="hl">certificados</span></h2>
+    </div>
+    <div class="arrows">
+      <button type="button" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+      <button type="button" id="next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="car" id="car">
+    <article class="card c1"><span class="num">1</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div>
+      <div><h3>Encuentra al instante</h3><p>Escribe parte del nombre, el NIF/CIF o la empresa y la tabla se filtra al momento, aunque tengas cientos de certificados instalados.</p></div></article>
+    <article class="card c2"><span class="num">2</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10M3 10l9-6 9 6"/></svg></div>
+      <div><h3>Entra con un clic</h3><p>AEAT, Seguridad Social, DEHú, DGT, Catastro, SEPE o la Carpeta Ciudadana. Chrome usa ese certificado sin que lo elijas en ninguna ventana. Un certificado por ventana, sin mezclar sesiones de clientes.</p></div></article>
+    <article class="card c3"><span class="num">3</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></div>
+      <div><h3>Descarga certificados y declaraciones</h3><p>Al corriente de Hacienda y de la Seguridad Social, situación censal, IAE y las declaraciones presentadas, con el certificado del cliente. Se guardan ordenados por cliente.</p></div></article>
+    <article class="card c4"><span class="num">4</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+      <div><h3>Dossier del cliente</h3><p>¿Te piden los dos últimos 111, el 347 y los certificados de estar al corriente? Elige todo de una vez y se descarga en una carpeta con la fecha.</p></div></article>
+    <article class="card c5"><span class="num">5</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg></div>
+      <div><h3>Aviso de caducidad</h3><p>Ve los caducados de los últimos 30 días y los que caducan en los próximos 30, con los días exactos y los plazos que tú cambies.</p></div></article>
+    <article class="card c6"><span class="num">6</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></div>
+      <div><h3>Correo y WhatsApp</h3><p>Se abre tu correo o tu WhatsApp con el mensaje ya escrito, para avisar de la caducidad o para enviar la documentación descargada. Tú solo pulsas enviar.</p></div></article>
+    <article class="card c7"><span class="num">7</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16zM13.5 6.5l4 4"/></svg></div>
+      <div><h3>Firma PDF</h3><p>Firma actas y documentos con el certificado, colocando cada firma con el ratón. Pueden firmar varios socios a la vez, cada uno con el suyo.</p></div></article>
+    <article class="card c8"><span class="num">8</span>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></div>
+      <div><h3>Renueva y copia de seguridad</h3><p>Un botón te lleva a la FNMT o la ACCV con el certificado elegido, y puedes sacar una copia protegida con contraseña (.pfx) de los que se pueden exportar.</p></div></article>
+  </div>
+</section>
+
+<!-- DESCARGAS -->
+<section id="descargas" class="dark2">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">Novedad · Descargas</p>
+      <h2>Los papeles de tu cliente, <span class="hl">sin buscar en la sede</span></h2>
+      <p class="lead">Selecciona el certificado, elige qué necesitas y CertiGest lo descarga. Todo queda ordenado en la carpeta del cliente.</p>
+      <ul class="tick">
+        <li><b>Certificados:</b> al corriente de Hacienda y de la Seguridad Social, situación censal e IAE.</li>
+        <li><b>Declaraciones presentadas:</b> elige el modelo, el ejercicio y el periodo (un trimestre, un mes o todos).</li>
+        <li><b>Dossier:</b> varios modelos y varios certificados de una sola vez, en una carpeta nueva con la fecha de hoy.</li>
+        <li><b>Envío al cliente:</b> al terminar, se abre tu correo o tu WhatsApp con la carpeta y un mensaje de plantilla.</li>
+      </ul>
+    </div>
+    <div class="stack rvx">
+      <div class="screen"><img src="app-dossier.png" width="620" height="720" loading="lazy" alt="Ventana Dossier del cliente: lista de modelos con ejercicio y periodo, y casillas para los certificados de Hacienda y Seguridad Social."></div>
+      <div class="screen"><img src="app-envio.png" width="680" height="720" loading="lazy" alt="Ventana Enviar documentación al cliente con el mensaje preparado y los botones de correo y WhatsApp."></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda" class="light">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Agenda y avisos</p>
+      <h2>Avisa a tus clientes <span class="hl">antes de que caduque</span></h2>
+      <p class="lead">CertiGest guarda el teléfono y el correo de cada cliente y, cuando un certificado está a punto de caducar, te prepara el mensaje. Tú lo revisas y le das a enviar.</p>
+    </div>
+    <div class="split">
+      <div class="rv">
+        <ul class="tick" style="margin-top:0">
+          <li><b>Importa desde Excel:</b> elige tu hoja de clientes (.xlsx o .csv) y CertiGest reconoce las columnas de NIF, nombre, teléfono y correo. Ves una vista previa antes de importar y se guarda una copia de seguridad.</li>
+          <li><b>Cada cliente en su sitio:</b> se reconoce por el NIF/CIF, así que sus datos siguen ahí aunque renueve el certificado.</li>
+          <li><b>Por correo o por WhatsApp:</b> se abre tu programa de correo o tu WhatsApp de escritorio con el mensaje preparado. No se envía nada automáticamente.</li>
+          <li><b>Tus plantillas:</b> cada aviso tiene una versión para correo y otra para WhatsApp, y las puedes cambiar o crear las tuyas.</li>
+          <li><b>Marca «avisado»</b> con su fecha y sabrás a quién ya has avisado.</li>
+        </ul>
+      </div>
+      <figure class="shot rvx"><div class="screen"><img src="agenda.png" width="1240" height="760" loading="lazy" alt="Agenda de CertiGest: lista de clientes con su NIF, teléfono, correo y estado del certificado, y a la derecha los datos del cliente seleccionado."></div><figcaption>La agenda de clientes (datos de ejemplo).</figcaption></figure>
+    </div>
+    <div class="split rev" style="margin-top:80px">
+      <div class="rv">
+        <div class="how" style="margin-top:0">
+          <h3>Así de simple</h3>
+          <p>1. Selecciona el certificado y pulsa <b>Avisar al cliente</b>.<br>2. Elige el tipo de aviso y revisa el texto.<br>3. Pulsa <b>WhatsApp</b> o <b>Enviar por correo</b> y envíalo desde allí.</p>
+        </div>
+        <p class="small">Para WhatsApp hace falta tener la aplicación de WhatsApp de escritorio o poder abrir WhatsApp Web. Si no te reconoce la aplicación, hay un botón para abrir WhatsApp Web.</p>
+      </div>
+      <figure class="shot sm rvx"><div class="screen"><img src="aviso.png" width="700" height="800" loading="lazy" alt="Ventana Avisar al cliente con el mensaje de WhatsApp preparado y los botones para enviar por correo o por WhatsApp."></div><figcaption>El aviso por WhatsApp, listo para enviar (datos de ejemplo).</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FIRMA -->
+<section id="firma" class="dark">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Firmar PDF</p>
+      <h2>Firma actas y documentos <span class="hl">sin salir del programa</span></h2>
+      <p class="lead">Selecciona el certificado, elige el PDF y marca con el ratón dónde va cada firma, en la hoja que quieras. Pensado para actas, asambleas y juntas, donde hay que firmar en varios sitios y a veces firman varios socios.</p>
+    </div>
+    <div class="split">
+      <ul class="tick rv" style="margin-top:0">
+        <li><b>Tú eliges dónde:</b> haz clic en la página o dibuja el recuadro del tamaño que necesites.</li>
+        <li><b>Varios firmantes a la vez:</b> añade los certificados de los socios que estén en el PC y cada uno firma en su sitio, cada uno con su color.</li>
+        <li><b>Varios PDF de golpe:</b> selecciónalos o arrástralos a la ventana y fírmalos con el mismo certificado y en el mismo sitio.</li>
+        <li><b>El original no se toca:</b> se crea una copia «nombre_firmado.pdf» y las firmas se comprueban en Adobe Acrobat.</li>
+        <li><b>La clave no sale del certificado:</b> firma Windows, y funciona aunque el certificado esté marcado como no exportable.</li>
+      </ul>
+      <figure class="shot rvx"><div class="screen"><img src="firmar-visor.png" width="1400" height="978" loading="lazy" alt="Visor de CertiGest con un acta de dos hojas y tres firmas colocadas, cada una de un firmante distinto y de un color."></div><figcaption>El visor para colocar las firmas (nombres de ejemplo).</figcaption></figure>
+    </div>
+    <div class="split rev" style="margin-top:80px">
+      <div class="rv">
+        <div class="how" style="margin-top:0"><h3>Así de simple</h3>
+          <p>1. Selecciona el certificado y pulsa <b>Firmar PDF</b>.<br>2. Elige el documento y pulsa <b>Elegir en el documento dónde firmar</b>.<br>3. Haz clic donde quieras la firma (o varias) y pulsa <b>Firmar</b>.</p></div>
+        <p class="small">Es una firma electrónica hecha con tu certificado. La fecha y hora que muestra el recuadro son las de tu ordenador. Con certificados en tarjeta o token, Windows pide el PIN; todavía no lo hemos probado con todos los modelos.</p>
+      </div>
+      <figure class="shot sm rvx"><div class="screen"><img src="firmar-resultado.png" width="909" height="820" loading="lazy" alt="Acta firmada con tres recuadros de firma digital de tres certificados distintos."></div><figcaption>Resultado: tres firmas de tres certificados (nombres de ejemplo).</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PROPIOS -->
+<section id="propios" class="light">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">Tus propias páginas</p>
+      <h2>Añade las sedes <span class="hl">que tú uses</span></h2>
+      <p class="lead" style="margin-top:22px">Además de los accesos que ya trae, puedes crear los tuyos: escribes el nombre (el ayuntamiento, un registro…) y la dirección de la página, y tienes un botón más. Se abre con el certificado que hayas seleccionado, igual que los demás.</p>
+      <p class="small">Los accesos que trae el programa los mantenemos nosotros y se corrigen solos si una sede cambia de dirección.</p>
+    </div>
+    <figure class="shot sm rvx"><div class="screen"><img src="accesos.png" width="560" height="608" loading="lazy" alt="Ventana Accesos con certificado, con los accesos oficiales marcados y un formulario para añadir otro."></div></figure>
+  </div>
+</section>
+
+<!-- PRIVACIDAD -->
+<section id="privacidad-sec" class="grad">
+  <div class="wrap">
+    <p class="eyebrow rv" style="color:var(--amber)">Privacidad</p>
+    <h2 class="big-lock rv" style="margin-top:18px">Tus certificados<br>no salen de tu PC.</h2>
+    <div class="trio">
+      <div class="glass rv"><h3>Nada se envía</h3><p>No subimos ni copiamos certificados, nombres, NIF ni claves a ningún servidor.</p></div>
+      <div class="glass rv" style="--d:.1s"><h3>Solo lo imprescindible</h3><p>Se conecta a internet únicamente para ver si hay versión nueva, actualizar la lista de accesos y comprobar si una licencia ha sido anulada. La licencia se comprueba en tu propio PC.</p></div>
+      <div class="glass rv" style="--d:.2s"><h3>Sin cuentas</h3><p>No hay registro ni contraseñas. Más detalle en la <a href="privacidad.html">política de privacidad</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENCIA -->
+<section id="licencia" class="light">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Prueba y licencia</p>
+      <h2>Pruébalo 10 días. <span class="hl">Después, una licencia por PC.</span></h2>
+      <p class="lead">La licencia se activa con una clave ligada a tu PC. No hay cuentas ni contraseñas que gestionar.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><h3>Descarga e instala</h3><p>Ejecuta el instalador. Durante 10 días CertiGest funciona completo.</p></div>
+      <div class="step rv" style="--d:.08s"><h3>Pruébalo</h3><p>Usa todas las funciones con tus propios certificados. No hace falta tarjeta ni registro.</p></div>
+      <div class="step rv" style="--d:.16s"><h3>Compra tu licencia</h3><p>Pagas con tarjeta e indicas el código de tu PC (CertiGest te lo muestra y lo copias con un clic). Recibes tu factura con IVA y una <span class="code">clave</span> por correo.</p></div>
+      <div class="step rv" style="--d:.24s"><h3>Pégala y listo</h3><p>Copias la clave en CertiGest y queda activado durante un año. Funciona sin conexión a internet.</p></div>
+    </div>
+    <div class="cta"><a class="btn btn-main" href="https://github.com/germanvv89/certigest-descargas/releases/download/v1/CertiGest_Setup_v1.4.0.exe">Empezar la prueba gratis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios" class="dark">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Precios</p>
+      <h2>Una licencia por PC, <span class="hl">un año</span></h2>
+      <p class="lead">Licencia anual para profesionales y empresas. Los precios no incluyen IVA: se añade el 21 % en la factura. No hay cobro automático: antes de que caduque CertiGest te avisa y puedes renovarla al mismo precio.</p>
+    </div>
+    <div class="plans">
+      <div class="plan best rv">
+        <span class="badge">Licencia anual</span>
+        <h3>1 PC</h3>
+        <div class="price">59,99 €<small> / año + IVA</small></div>
+        <ul>
+          <li>Un equipo autorizado</li>
+          <li>Todas las funciones, incluida la firma de PDF</li>
+          <li>Actualizaciones durante el año</li>
+          <li>Factura con IVA a tu nombre o empresa</li>
+        </ul>
+        <a class="btn btn-white" href="https://buy.stripe.com/bJeeVe9BzgDR86e0qt6Ri00" target="_blank" rel="noopener">Comprar con tarjeta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="plan rv" style="--d:.1s">
+        <h3>Varios PCs</h3>
+        <div class="price">A medida</div>
+        <ul>
+          <li>Una licencia por cada PC</li>
+          <li>Precio especial desde el segundo equipo</li>
+          <li>Una sola factura</li>
+          <li>Ideal para asesorías y despachos</li>
+        </ul>
+        <a class="btn btn-line" href="mailto:info@certigest.es?subject=Licencias%20CertiGest%20para%20varios%20PCs">Pedir presupuesto</a>
+      </div>
+    </div>
+    <p class="fine">En el pago verás el total con IVA: 72,59 € (59,99 € + 21 % de IVA). Escribe en el formulario el <b>código de tu PC</b> (CertiGest → Licencia → Copiar) y tus datos de facturación. Recibirás la clave por correo cuando se confirme el pago. ¿Prefieres pagar por transferencia? <a href="mailto:info@certigest.es?subject=Solicitud%20de%20licencia%20CertiGest&body=Hola%2C%20quiero%20una%20licencia%20de%20CertiGest%20y%20pagar%20por%20transferencia.%0A%0ANombre%20o%20empresa%3A%20%0ANIF%2FCIF%3A%20%0ACorreo%20para%20la%20factura%3A%20%0ADirecci%C3%B3n%20fiscal%3A%20%0AC%C3%B3digo%20del%20PC%3A%20%0A">Solicítala por correo</a>. Consulta las <a href="condiciones.html">condiciones de venta</a>.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="light">
+  <div class="wrap faq">
+    <div class="sec-head rv">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2>Antes de <span class="hl">instalar</span></h2>
+    </div>
+    <details><summary>¿Necesito tener Chrome?</summary><p>Sí. CertiGest abre las sedes en Google Chrome y le indica qué certificado usar, así que tienes que tenerlo instalado.</p></details>
+      <details><summary>¿Funciona con certificados en tarjeta o con el DNI electrónico?</summary><p>CertiGest muestra los certificados que Windows tiene disponibles en el almacén personal del equipo. Todavía no lo hemos probado con todas las tarjetas ni lectores, así que si trabajas con ellos, comprueba tu caso con los 10 días de prueba o escríbenos antes de comprar.</p></details>
+      <details><summary>¿Funciona en Mac o en Linux?</summary><p>No. CertiGest es solo para Windows 10 y 11.</p></details>
+      <details><summary>¿Funciona si ya tengo Chrome abierto, o si uso otros programas que lo usan?</summary><p>Sí. El primer acceso se abre en tu Chrome normal. Si ya hay un Chrome abierto, CertiGest abre una ventana nueva e independiente con el certificado elegido, así que no choca con otros programas ni con tus ventanas abiertas. Esa ventana nueva no trae tus contraseñas guardadas ni extensiones, pero sí tus marcadores.</p></details>
+      <details><summary>¿Puedo firmar PDF con CertiGest?</summary><p>Sí. Seleccionas el certificado, eliges el PDF y marcas en el visor dónde va cada firma, en la hoja que quieras y tantas veces como necesites. Si firman varios socios, añades sus certificados (instalados en ese PC) y cada uno firma en su sitio en una sola pasada. Se guarda una copia «_firmado» y el original no se modifica. La firma la hace Windows con el certificado, así que funciona aunque no sea exportable. Con certificados en tarjeta o token, Windows pedirá el PIN; no lo hemos probado todavía con todos los modelos.</p></details>
+      <details><summary>¿Cómo traigo los teléfonos y correos de mis clientes?</summary><p>En la pestaña <b>Agenda</b> pulsa <b>Importar desde Excel…</b> y elige tu archivo (.xlsx o .csv; si lo tienes en .xls antiguo, guárdalo antes como .xlsx). CertiGest detecta las columnas, te enseña una vista previa y reconoce a cada cliente por su NIF/CIF o, si no lo tienes en el Excel, por su nombre. Por defecto solo rellena los datos que faltan y guarda una copia de tu agenda anterior.</p></details>
+      <details><summary>¿Envía los mensajes de WhatsApp o los correos por mí?</summary><p>No. CertiGest abre tu programa de correo o tu WhatsApp de escritorio con el mensaje ya escrito y la persona elegida, y tú le das a enviar. Así revisas el mensaje antes y sale desde tu propio correo y tu propio número.</p></details>
+      <details><summary>¿A qué páginas puedo entrar?</summary><p>AEAT, Seguridad Social (Import@ss), DEHú, DGT, Catastro, SEPE y la Carpeta Ciudadana de la Generalitat Valenciana. Además, puedes añadir las que tú quieras.</p></details>
+      <details><summary>¿Necesita internet para funcionar?</summary><p>Para buscar y ver tus certificados, no. Internet solo se usa para las actualizaciones, la lista de accesos y para saber si una licencia ha sido anulada. La licencia se comprueba en tu propio PC, así que funciona igual sin conexión.</p></details>
+      <details><summary>Windows dice «Windows protegió su PC». ¿Es peligroso?</summary><p>No. Windows muestra ese aviso con cualquier programa nuevo que todavía no tiene firma digital. Pulsa <b>Más información</b> y luego <b>Ejecutar de todas formas</b>. Si prefieres no hacerlo, puedes escribirnos y resolvemos tus dudas antes.</p></details>
+      <details><summary>Windows o mi antivirus bloquea la descarga o la instalación. ¿Qué hago?</summary><p>CertiGest es un programa nuevo y todavía no es conocido para Windows, por eso algunos equipos lo frenan aunque no tenga nada malo. Prueba esto, por orden: 1) En el aviso de SmartScreen pulsa <b>Más información</b> y <b>Ejecutar de todas formas</b>. 2) Si Chrome o Edge no te dejan conservar el archivo, abre la lista de descargas, pulsa los tres puntos del archivo y elige <b>Conservar</b>. 3) Si Windows 11 muestra «Smart App Control bloqueó una parte de esta aplicación», esa protección no permite excepciones; escríbenos a <b>info@certigest.es</b> y te ayudamos a instalarlo. Si prefieres, puedes comprobar el archivo en <b>virustotal.com</b> antes de abrirlo.</p></details>
+      <details><summary>¿Qué pasa cuando acaban los 10 días?</summary><p>CertiGest te pide la clave de licencia. No se borra nada de tu equipo ni de tus certificados. Al pegar la clave vuelves a usarlo con normalidad.</p></details>
+      <details><summary>¿Puedo usar la misma licencia en otro PC o en otra empresa?</summary><p>No. La clave se genera para el PC que nos indicas y para quien la compra; en otro equipo no se activa. Si necesitas más PCs, pide una licencia por cada uno (con precio especial).</p></details>
+      <details><summary>¿Y si cambio de ordenador o reinstalo Windows?</summary><p>Escríbenos con el código del PC nuevo (lo ves en la ventana de licencia de CertiGest) y te preparamos una clave para ese equipo sin cobrarte otra licencia mientras la tuya siga vigente. La clave del PC anterior se anula.</p></details>
+      <details><summary>¿Se renueva sola la licencia?</summary><p>No. No hay cobros automáticos. CertiGest te avisa 30 días, 7 días y 1 día antes de que caduque, y renuevas pidiendo la clave nueva; el año nuevo empieza cuando termina el anterior, así que no pierdes ningún día.</p></details>
+      <details><summary>¿Por qué pide permisos de administrador?</summary><p>Para que Chrome elija el certificado automáticamente al entrar en la AEAT y en la Seguridad Social, CertiGest escribe una norma temporal de Chrome que solo Windows permite a un administrador. La norma se retira sola.</p></details>
+      <details><summary>¿Envía mis certificados a algún sitio?</summary><p>No. Los certificados no salen de tu PC: CertiGest los lee del almacén de Windows y trabaja en local. Solo se conecta a internet para comprobar si hay una versión nueva, para actualizar la lista de accesos a las sedes y para saber si una licencia ha sido anulada. Más detalle en la <a href="privacidad.html">política de privacidad</a>.</p></details>
+      <details><summary>¿Y si una sede cambia su dirección y el botón deja de funcionar?</summary><p>La lista de accesos se actualiza por internet, así que lo corregimos nosotros y te llega al abrir el programa, sin que reinstales nada.</p></details>
+    
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="contacto" class="final">
+  <div class="wrap">
+    <svg class="mini" viewBox="0 0 80 80" aria-hidden="true">
+      <path pathLength="1" d="M59.9 23.3 A26 26 0 1 0 59.9 56.7" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:0"/>
+      <path d="M40 40 L49 46" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="120s" repeatCount="indefinite"/></path>
+      <path d="M40 40 V27" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="6s" repeatCount="indefinite"/></path>
+      <circle cx="40" cy="40" r="4.5" fill="#fbbf24"/>
+    </svg>
+    <h2 class="rv">No dejes que caduque <span class="amb">otro certificado.</span></h2>
+    <p class="lead rv" style="--d:.1s">Descárgalo, pruébalo 10 días con tus propios certificados y decide. Si tienes dudas o necesitas una licencia a medida, escríbenos.</p>
+    <div class="cta rv" style="--d:.18s">
+      <a class="btn btn-main" href="https://github.com/germanvv89/certigest-descargas/releases/download/v1/CertiGest_Setup_v1.4.0.exe">Descargar CertiGest para Windows <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-line" href="CertiGest_Guia_de_uso.pdf" target="_blank" rel="noopener">Ver la guía de uso (PDF)</a>
+    </div>
+    <div class="mail"><span>Contacto:</span><code id="mail">info@certigest.es</code><button type="button" id="copy">Copiar</button></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap in">
+    <div><b>CertiGest</b> · Correo: info@certigest.es</div>
+    <div>Los datos fiscales del titular figuran en la documentación de compra y en la factura.</div>
+    <div>CertiGest no es un producto de la AEAT ni de la Seguridad Social, ni está vinculado a ellas.</div>
+    <div class="links"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Política de privacidad</a><a href="condiciones.html">Condiciones de venta</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.body.classList.add("js-ok");
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* marcas del reloj alrededor del logo */
+  var g=document.getElementById("ticks");
+  if(g){for(var i=0;i<60;i++){var a=i/60*2*Math.PI-Math.PI/2,big=i%5===0,r1=big?150:156,r2=170;
+    var l=document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",200+Math.cos(a)*r1);l.setAttribute("y1",200+Math.sin(a)*r1);
+    l.setAttribute("x2",200+Math.cos(a)*r2);l.setAttribute("y2",200+Math.sin(a)*r2);
+    l.setAttribute("stroke",big?"#fbbf24":"#a5b4fc");l.setAttribute("stroke-opacity",big?"1":".55");
+    l.setAttribute("stroke-width",big?"3":"1.5");l.setAttribute("stroke-linecap","round");
+    l.style.animationDelay=(.4+i*.022)+"s";g.appendChild(l);}}
+  /* cabecera */
+  var cab=document.getElementById("cab");
+  function sc(){cab.classList.toggle("fija",scrollY>30);
+    var p=document.getElementById("pantalla");
+    if(p&&!reduce){var r=p.getBoundingClientRect(),h=innerHeight,t=Math.min(1,Math.max(0,(h-r.top)/(h*.9)));
+      p.style.transform="perspective(1400px) rotateX("+(7*(1-t)).toFixed(2)+"deg) scale("+(.96+.04*t).toFixed(3)+")";}}
+  addEventListener("scroll",sc,{passive:true});sc();
+  /* aparecer al bajar */
+  var els=document.querySelectorAll(".rv,.rvx");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+    els.forEach(function(e){io.observe(e)});
+  }else{els.forEach(function(e){e.classList.add("on")})}
+  /* carrusel arrastrable */
+  var car=document.getElementById("car"),down=false,sx=0,sl=0,moved=false;
+  car.addEventListener("pointerdown",function(e){if(e.pointerType==="touch")return;down=true;moved=false;sx=e.clientX;sl=car.scrollLeft;car.classList.add("drag")});
+  addEventListener("pointermove",function(e){if(!down)return;var d=e.clientX-sx;if(Math.abs(d)>3)moved=true;car.scrollLeft=sl-d});
+  addEventListener("pointerup",function(){down=false;car.classList.remove("drag")});
+  function paso(d){car.scrollBy({left:d*(car.querySelector(".card").offsetWidth+22),behavior:"smooth"})}
+  document.getElementById("prev").onclick=function(){paso(-1)};
+  document.getElementById("next").onclick=function(){paso(1)};
+  /* copiar correo */
+  var t=document.getElementById("mail"),b=document.getElementById("copy");
+  function ok(){b.textContent="Copiado";setTimeout(function(){b.textContent="Copiar"},1500)}
+  function sel(){var r=document.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  b.addEventListener("click",function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.textContent).then(ok,sel)}else{sel()}});
+  if(reduce){document.querySelectorAll("svg").forEach(function(s){if(s.pauseAnimations)s.pauseAnimations()})}
+})();
+</script>
+
+<script>
+(function(){
+  var em=document.querySelector(".emblem"),box=document.getElementById("chips");
+  if(!em||!box)return;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var POOL=[
+   {t:"AEAT · entras con 1 clic",k:""},{t:"Seguridad Social",k:""},{t:"Caduca en 23 días",k:"w"},{t:"Caducó hace 4 días",k:"r"},
+   {t:"Modelo 303 descargado",k:""},{t:"Certificado al corriente",k:""},{t:"Dossier completo en 1 clic",k:""},
+   {t:"PDF firmado por 3 socios",k:""},{t:"Aviso enviado por WhatsApp",k:""},{t:"Declaración 111 · 2T",k:""},
+   {t:"DEHú",k:""},{t:"Renovar con la FNMT",k:"w"},{t:"Modelo 347 descargado",k:""},{t:"Catastro",k:""},{t:"Situación censal",k:""}];
+  var timers=[],raf=0,gen=0;
+  function later(f,ms){var g=gen;var id=setTimeout(function(){if(g===gen)f()},ms);timers.push(id)}
+  function mk(m,big){var e=document.createElement("span");e.className="chip2 "+(m.k||"")+(big?" big":"");e.innerHTML="<i></i><b></b>";e.lastChild.textContent=m.t;return e}
+  function setT(e,m){e.className="chip2 "+(m.k||"");e.lastChild.textContent=m.t}
+  function W(){return em.clientWidth}
+  function put(e,x,y,s,o,z){e.style.transform="translate("+(x*W())+"px,"+(y*W())+"px) translate(-50%,-50%) scale("+s+")";e.style.opacity=o;if(z!=null)e.style.zIndex=z}
+  function jump(e,x,y,s,o){e.style.transition="none";put(e,x,y,s,o);void e.offsetWidth;e.style.transition=""}
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.random()*(i+1)|0,t=a[i];a[i]=a[j];a[j]=t}return a}
+  function shock(){if(reduce)return;var d=document.createElement("div");d.className="shock";em.appendChild(d);d.addEventListener("animationend",function(){d.remove()});em.classList.add("flash");setTimeout(function(){em.classList.remove("flash")},550)}
+  /* chispas */
+  var cv=em.querySelector("canvas.spark"),cx=cv.getContext("2d"),P=[],S=0;
+  function size(){var r=window.devicePixelRatio||1;S=cv.clientWidth;cv.width=S*r;cv.height=S*r;cx.setTransform(r,0,0,r,0,0)}
+  size();addEventListener("resize",size);
+  function spawn(fast){var a=Math.random()*6.283,r=S*(fast?.18:.28+Math.random()*.06),v=fast?1.2+Math.random()*2.4:.25+Math.random()*.5;
+    P.push({x:S/2+Math.cos(a)*r,y:S/2+Math.sin(a)*r,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:0,m:fast?50+Math.random()*30:110+Math.random()*80,c:Math.random()<.5?"251,191,36":"165,180,252",r:fast?1.4+Math.random()*2:1+Math.random()*1.6})}
+  function burst(n){if(reduce)return;for(var i=0;i<n;i++)spawn(true)}
+  var last=0;function frame(t){
+    cx.clearRect(0,0,S,S);
+    if(!reduce&&t-last>70){last=t;if(P.length<90)spawn(false)}
+    for(var i=P.length-1;i>=0;i--){var p=P[i];p.l++;p.x+=p.vx;p.y+=p.vy;var k=p.l/p.m;if(k>=1){P.splice(i,1);continue}
+      cx.fillStyle="rgba("+p.c+","+(k<.2?k*5:1-k)*.9+")";cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill()}
+    requestAnimationFrame(frame)}
+  requestAnimationFrame(frame);
+  /* parallax con el ratón */
+  if(!reduce)addEventListener("mousemove",function(e){var r=em.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/innerWidth,dy=(e.clientY-(r.top+r.height/2))/innerHeight;
+    em.querySelector("svg.logo").style.transform="rotateY("+(dx*22).toFixed(2)+"deg) rotateX("+(-dy*22).toFixed(2)+"deg)";
+    box.style.transform="translate("+(-dx*26).toFixed(1)+"px,"+(-dy*26).toFixed(1)+"px)"},{passive:true});
+  /* ---------- 2 · CAMBIANTE ---------- */
+  function v2(){
+    var SL=[[.3,.0],[.88,.14],[.1,.5],[.98,.58],[.2,.94],[.82,.94],[.62,-.04]],chips=[],used={},msgs=shuffle(POOL.slice()),nx=5,turn=0;
+    for(var i=0;i<5;i++){var e=mk(msgs[i]);box.appendChild(e);chips.push({e:e,s:i});used[i]=1;jump(e,SL[i][0],SL[i][1],.5,0);(function(e,i){later(function(){put(e,SL[i][0],SL[i][1],1,1)},300+i*260)})(e,i)}
+    function free(cur){var f=[];for(var s=0;s<SL.length;s++)if(!used[s])f.push(s);return f[Math.random()*f.length|0]}
+    function tick(){var c=chips[turn++%chips.length];
+      put(c.e,SL[c.s][0],SL[c.s][1],.55,0);
+      later(function(){delete used[c.s];var s=free();used[s]=1;c.s=s;setT(c.e,msgs[nx++%msgs.length]);
+        jump(c.e,SL[s][0],SL[s][1],.5,0);put(c.e,SL[s][0],SL[s][1],1,1);shock();burst(10)},450);
+      later(tick,2300)}
+    if(!reduce)later(tick,2600)}
+  /* ---------- Entrada: estrella fugaz desde la izquierda ---------- */
+  var hero=document.querySelector(".hero"),cometRAF=0,cometCv=null;
+  function cometaStop(){cancelAnimationFrame(cometRAF);if(cometCv){cometCv.remove();cometCv=null}em.classList.remove("pre")}
+  function cometa(done){
+    cometaStop();
+    if(reduce||!hero){done();return}
+    var cv=document.createElement("canvas");cv.className="comet";hero.appendChild(cv);cometCv=cv;
+    var hr=hero.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);cv.width=hr.width*dpr;cv.height=hr.height*dpr;
+    var x=cv.getContext("2d");x.scale(dpr,dpr);
+    var er=em.getBoundingClientRect(),tx=er.left-hr.left+er.width/2,ty=er.top-hr.top+er.height/2;
+    var sx=-60,sy=Math.max(60,hr.height*.16),cx=hr.width*.42,cy=Math.max(20,hr.height*.02);
+    em.classList.add("pre");
+    var D=1500,t0=performance.now(),trail=[],sparks=[],landed=false;
+    function P(u){var a=(1-u)*(1-u),b=2*(1-u)*u,d=u*u;return[a*sx+b*cx+d*tx,a*sy+b*cy+d*ty]}
+    function f(now){var k=Math.min(1,(now-t0)/D),u=k*k*(1.6-.6*k);u=Math.min(1,u);
+      var p=P(u);trail.push([p[0],p[1],now]);if(trail.length>70)trail.shift();
+      x.clearRect(0,0,hr.width,hr.height);
+      x.globalCompositeOperation="lighter";
+      for(var i=1;i<trail.length;i++){var q=trail[i],w=i/trail.length,o=trail[i-1];
+        x.strokeStyle="rgba(251,191,36,"+(w*.55).toFixed(3)+")";x.lineWidth=1+w*9;x.lineCap="round";
+        x.beginPath();x.moveTo(o[0],o[1]);x.lineTo(q[0],q[1]);x.stroke();
+        x.strokeStyle="rgba(165,180,252,"+(w*.5).toFixed(3)+")";x.lineWidth=w*3.5;x.beginPath();x.moveTo(o[0],o[1]);x.lineTo(q[0],q[1]);x.stroke()}
+      if(k<1){var g=x.createRadialGradient(p[0],p[1],0,p[0],p[1],34);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(.25,"rgba(255,214,90,.9)");g.addColorStop(1,"rgba(251,191,36,0)");
+        x.fillStyle=g;x.beginPath();x.arc(p[0],p[1],34,0,6.283);x.fill();
+        for(var s=0;s<2;s++)sparks.push([p[0],p[1],(Math.random()-.7)*1.6,(Math.random()-.5)*1.6,1])}
+      for(i=sparks.length-1;i>=0;i--){var sp=sparks[i];sp[0]+=sp[2];sp[1]+=sp[3];sp[4]-=.022;if(sp[4]<=0){sparks.splice(i,1);continue}
+        x.fillStyle="rgba(255,225,130,"+sp[4].toFixed(2)+")";x.fillRect(sp[0],sp[1],2,2)}
+      if(k>=1&&!landed){landed=true;em.classList.remove("pre");void em.offsetWidth;shock();burst(40);done()}
+      if(k>=1&&trail.length){trail.shift();trail.shift()}
+      if(k<1||trail.length||sparks.length)cometRAF=requestAnimationFrame(f);else{cv.remove();cometCv=null}}
+    cometRAF=requestAnimationFrame(f)}
+  function arrancar(v){cometaStop();gen++;timers.forEach(clearTimeout);timers=[];cancelAnimationFrame(raf);box.innerHTML="";
+    var g0=gen;cometa(function(){if(g0===gen)v2()})}
+  addEventListener("resize",function(){});
+  arrancar(2);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+{
+ "comentario": "Lista de botones de CertiGest. Para cambiar una direccion, edita la linea y vuelve a subir la carpeta a Netlify. 'retirar' = nombres de botones que se borran de todos los equipos. 'principales' = direcciones de los botones grandes AEAT (clave AEAT) y Seguridad Social (clave SS). 'aviso' (opcional) = texto en ambar bajo ese boton en 'Otros accesos'. 'grupo' (opcional) = titulo bajo el que se agrupan botones en 'Otros accesos'.",
+ "retirar": [],
+ "principales": {
+  "AEAT": {
+   "url": "https://sede.agenciatributaria.gob.es/",
+   "patrones": [
+    "https://[*.]agenciatributaria.gob.es"
+   ]
+  },
+  "SS": {
+   "url": "https://portal.seg-social.gob.es/wps/portal/importass/importass/inicio",
+   "patrones": [
+    "https://[*.]seg-social.gob.es",
+    "https://[*.]seg-social.es"
+   ]
+  }
+ },
+ "accesos": [
+  {
+   "nombre": "DEHú (notificaciones)",
+   "url": "https://dehu.redsara.es/",
+   "patrones": [
+    "https://[*.]redsara.es",
+    "https://[*.]clave.gob.es"
+   ],
+   "aviso": "DEHú recuerda la sesión. Si vas a entrar con otro certificado, cierra primero sesión en DEHú y cierra Chrome."
+  },
+  {
+   "nombre": "DGT (tráfico)",
+   "url": "https://sede.dgt.gob.es/",
+   "patrones": [
+    "https://[*.]dgt.gob.es",
+    "https://[*.]clave.gob.es",
+    "https://[*.]redsara.es"
+   ]
+  },
+  {
+   "nombre": "Catastro",
+   "url": "https://www.sedecatastro.gob.es/",
+   "patrones": [
+    "https://[*.]sedecatastro.gob.es"
+   ]
+  },
+  {
+   "nombre": "SEPE",
+   "url": "https://sede.sepe.gob.es/GesUsuariosSEDE/GestionUsuariosTrabajaWeb/intro_seguridad.do",
+   "patrones": [
+    "https://[*.]sepe.gob.es",
+    "https://[*.]clave.gob.es",
+    "https://[*.]redsara.es"
+   ]
+  },
+  {
+   "nombre": "Carpeta Ciudadana GVA",
+   "url": "https://carpetaciudadana.gva.es/micarpeta/login?idioma=es",
+   "patrones": [
+    "https://[*.]gva.es"
+   ]
+  },
+  {
+   "nombre": "Certificado al corriente · Hacienda",
+   "url": "https://www1.agenciatributaria.gob.es/wlpl/EMCE-JDIT/ECOTInternetCiudadanosServlet",
+   "patrones": [
+    "https://[*.]agenciatributaria.gob.es"
+   ],
+   "grupo": "Trámites frecuentes"
+  },
+  {
+   "nombre": "Certificado de situación censal",
+   "url": "https://www1.agenciatributaria.gob.es/wlpl/EMCE-JDIT/ServletSitCenInternet",
+   "patrones": [
+    "https://[*.]agenciatributaria.gob.es"
+   ],
+   "grupo": "Trámites frecuentes"
+  },
+  {
+   "nombre": "Informe de vida laboral",
+   "url": "https://portal.seg-social.gob.es/wps/portal/importass/importass/Categorias/Vida+laboral+e+informes/Informes+sobre+tu+situacion+laboral/Informe+de+tu+vida+laboral",
+   "patrones": [
+    "https://[*.]seg-social.gob.es",
+    "https://[*.]seg-social.es"
+   ],
+   "grupo": "Trámites frecuentes"
+  },
+  {
+   "nombre": "Certificado al corriente · Seg. Social",
+   "url": "https://sede.seg-social.gob.es/wps/portal/sede/sede/EmpresasyProfesionales/Informes+y+Certificados/N201736",
+   "patrones": [
+    "https://[*.]seg-social.gob.es",
+    "https://[*.]seg-social.es"
+   ],
+   "grupo": "Trámites frecuentes"
+  },
+  {
+   "nombre": "Mis expedientes · declaraciones presentadas",
+   "url": "https://www1.agenciatributaria.gob.es/wlpl/TEWV-CORE/ResumenVlt",
+   "patrones": [
+    "https://[*.]agenciatributaria.gob.es"
+   ],
+   "grupo": "Trámites frecuentes"
+  }
+ ]
+}
