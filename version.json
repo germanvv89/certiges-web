@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.5.1",
   "url": "https://github.com/germanvv89/certigest-descargas/releases/latest/download/CertiGest_Setup.exe",
-  "notas": "Novedades de la 1.5.0:\n• Aviso fijo de actualización: se descarga e instala sola al pulsar.\n• Ahora puedes firmar PDF escaneados con el móvil.\n• Clic derecho → Pegar en todas las casillas.\n• Copia de seguridad de solo los certificados.\n• Al descargar un modelo o certificado se abre también la carpeta.\n• Los modelos anuales (100, 200, 347, 180, 190, 390, 714, 720) ya no dejan elegir trimestre.\n• Si hay complementarias o sustitutivas, descarga todas y te avisa."
+  "notas": "Novedades de la 1.5.1:\n• Botón de la Seguridad Social renombrado a «Seg. Social (Importass)» y actualizado a la nueva dirección de Import@ss.\n• El botón de la DGT ahora abre directamente «Mi DGT».\n• Pequeñas correcciones del aviso de actualización."
 }
