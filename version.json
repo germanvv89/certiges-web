@@ -1,1 +1,5 @@
-{"version": "1.4.0", "url": "https://github.com/germanvv89/certigest-descargas/releases/latest/download/CertiGest_Setup.exe", "notas": "Novedades: diseño renovado con modo oscuro, agenda de clientes con teléfono y correo (importable desde Excel), aviso por correo o WhatsApp con plantillas propias, doble clic configurable y firma de PDF arrastrando los archivos."}
+{
+  "version": "1.5.0",
+  "url": "https://github.com/germanvv89/certigest-descargas/releases/latest/download/CertiGest_Setup.exe",
+  "notas": "Novedades de la 1.5.0:\n• Aviso fijo de actualización: se descarga e instala sola al pulsar.\n• Ahora puedes firmar PDF escaneados con el móvil.\n• Clic derecho → Pegar en todas las casillas.\n• Copia de seguridad de solo los certificados.\n• Al descargar un modelo o certificado se abre también la carpeta.\n• Los modelos anuales (100, 200, 347, 180, 190, 390, 714, 720) ya no dejan elegir trimestre.\n• Si hay complementarias o sustitutivas, descarga todas y te avisa."
+}
