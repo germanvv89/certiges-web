@@ -9,7 +9,7 @@
    ]
   },
   "SS": {
-   "url": "https://portal.seg-social.gob.es/wps/portal/importass/importass/inicio",
+   "url": "https://portal.seg-social.gob.es/wps/myportal/importass/importass/personal/",
    "patrones": [
     "https://[*.]seg-social.gob.es",
     "https://[*.]seg-social.es"
@@ -28,7 +28,7 @@
   },
   {
    "nombre": "DGT (tráfico)",
-   "url": "https://sede.dgt.gob.es/",
+   "url": "https://sede.dgt.gob.es/es/mi_dgt/",
    "patrones": [
     "https://[*.]dgt.gob.es",
     "https://[*.]clave.gob.es",
